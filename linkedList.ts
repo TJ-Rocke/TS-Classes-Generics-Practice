@@ -6,7 +6,7 @@ class ListNode<T> {
 class LinkedList<T> {
   private root?: ListNode<T>;
   private tail?: ListNode<T>; // track last node
-  private length: number = 0;
+  private length = 0;
 
   // add new value
   add(value: T) {
@@ -17,7 +17,7 @@ class LinkedList<T> {
       this.tail = node;
     } else {
       // if we do have a root node already, update the last node of this list of nodes
-      let current = this.root;
+      // let current = this.root;
       // go through all the nodes that I have in the linked list
       // while (current.next) {
       //   // keep going until we find a node where its 'next' value is undefined
@@ -26,11 +26,30 @@ class LinkedList<T> {
       this.tail.next = node;
       this.tail = node;
       // on the last node, set 'next' value to the variable 'node'
-      current.next = node;
+      // current.next = node;
     }
     this.length++;
+  }
+
+  getLength() {
+    return this.length;
+  }
+
+  // display every value in the linked list
+  print() {
+    let current = this.root; // assign current to the root node
+    while (current) {
+      // loop until current is "falsy"
+      console.log(current.value);
+      current = current.next; // update until 'undefined'
+    }
   }
 }
 
 const numberList = new LinkedList<number>();
+numberList.add(19);
+numberList.add(5);
+numberList.add(3);
+console.log(numberList.getLength());
+numberList.print();
 const nameList = new LinkedList<string>();
